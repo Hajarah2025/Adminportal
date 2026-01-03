@@ -1,55 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PTS EXPRESS </title>
-    <link rel="stylesheet" href="style.css">
-
-      <header>
-        <div>
-        <h1 class="left">PTS Express Admin</h1>
-        <h1 class="center"> Admin <Portal></Portal></h1>
-        <h1>FAQ</h1>
-        </div>
-      </header>
-     </head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuizMaster</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
   <div class="container">
-  
-  <p><h4>Sign in with yor work</h4></p>
-  <p>Please fill in your Admin Log in details.</p><br>
-  <form action="#" method="post">
-    <button class="google-btn">
-      <i class="fa fa-google" aria-hidden="true">  Sign up with google</i>
 
-    </button><br>
-    <button class="facebook-btn">
-      <i class="fa fa-facebook" aria-hidden="true">  Sign up with facebook</i>
-    </button><br>
-    <p class="or-text">_____________________OR________________________</p>
-    
-  </form>
+    <!-- Home Screen -->
+    <div id="home-screen" class="screen active">
+      <h1>QuizMaster</h1>
+      <p>Test your knowledge with fun trivia questions!</p>
+      <button id="start-btn">Start Quiz</button>
+      <!-- Banner Ad Placeholder -->
+      <div id="banner-ad-home" class="banner-ad">
+        <!-- Insert your AdMob banner here -->
+        <p>ca-app-pub-8448361992710184/9439058000</p>
+      </div>
+    </div>
 
-  <div class="email-field">
-          
-                  <label for="email">Email:</label>
-                  <input type="email" id="email" name="email" 
-                  placeholder="Enter your email"><br>
-  </div><br>
-                    <div class="password-field">
-                  <label for="password">Password:</label>
-                    <input type="password" id="password" placeholder="Enter password" class="show-password">
-                    <!-- <span class="show-password" id="show-password"></span> -->
-                    </div><br>
-                    <button class="continue-button">continue</button>
-                  <p>Dont have an account?</p>
+    <!-- Quiz Screen -->
+    <div id="quiz-screen" class="screen">
+      <div id="progress">Question 1 / 8</div>
+      <div id="question-text">Question Text</div>
+      <div id="options-container">
+        <button class="option-btn" data-index="0">Option A</button>
+        <button class="option-btn" data-index="1">Option B</button>
+        <button class="option-btn" data-index="2">Option C</button>
+        <button class="option-btn" data-index="3">Option D</button>
+      </div>
+      <!-- Banner Ad Placeholder -->
+      <div id="banner-ad-quiz" class="banner-ad">
+        <p>ca-app-pub-8448361992710184/9439058000</p>
+      </div>
+    </div>
 
-                    <button class="signup-button">sign up</button>
-                    </div>
-                  </div>
-                  </div>
-            
-    
+    <!-- Results Screen -->
+    <div id="results-screen" class="screen">
+      <h2>Quiz Complete!</h2>
+      <p id="score-text">Your Score: 0 / 8</p>
+      <p id="performance-text">Performance: -</p>
+      <button id="play-again-btn">Play Again</button>
+      <!-- Interstitial Ad Placeholder -->
+      <div id="interstitial-ad" class="banner-ad">
+        <p>ca-app-pub-8448361992710184/9439058000</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
-</html>     
+</html>

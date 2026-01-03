@@ -2,55 +2,188 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuizMaster</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Quiz</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #F8FAFC;
+  color: #1E293B;
+}
+
+.container {
+  max-width: 480px;
+  margin: auto;
+  padding: 20px;
+}
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+h1 {
+  color: #7C3AED;
+  text-align: center;
+}
+
+h2 {
+  color: #7C3AED;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  color: #64748B;
+}
+
+button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  background-color: #7C3AED;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6B21A8;
+}
+
+#options-container button {
+  background-color: #FFFFFF;
+  color: #1E293B;
+  border: 2px solid #E5E7EB;
+}
+
+#options-container button:hover {
+  background-color: #A855F7;
+  color: white;
+}
+
+.banner-ad {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #E5E7EB;
+  text-align: center;
+  border-radius: 8px;
+}
+
+  </style>
 </head>
 <body>
   <div class="container">
-
-    <!-- Home Screen -->
+<!-- Home Screen -->
     <div id="home-screen" class="screen active">
       <h1>QuizMaster</h1>
       <p>Test your knowledge with fun trivia questions!</p>
-      <button id="start-btn">Start Quiz</button>
+<a href= "indem.html">     
+        <button id="start-btn">Start Quiz<\button>
+</a>
+      
+      
       <!-- Banner Ad Placeholder -->
-      <div id="banner-ad-home" class="banner-ad">
+      <    id=iv id="banner-ad class=class="bann>
         <!-- Insert your AdMob banner here -->
-        <p>ca-app-pub-8448361992710184/9439058000</p>
-      </div>
-    </div>
-
-    <!-- Quiz Screen -->
-    <div id="quiz-screen" class="screen">
-      <div id="progress">Question 1 / 8</div>
-      <div id="question-text">Question Text</div>
-      <div id="options-container">
-        <button class="option-btn" data-index="0">Option A</button>
-        <button class="option-btn" data-index="1">Option B</button>
-        <button class="option-btn" data-index="2">Option C</button>
-        <button class="option-btn" data-index="3">Option D</button>
-      </div>
-      <!-- Banner Ad Placeholder -->
-      <div id="banner-ad-quiz" class="banner-ad">
-        <p>ca-app-pub-8448361992710184/9439058000</p>
-      </div>
-    </div>
-
-    <!-- Results Screen -->
-    <div id="results-screen" class="screen">
-      <h2>Quiz Complete!</h2>
-      <p id="score-text">Your Score: 0 / 8</p>
-      <p id="performance-text">Performance: -</p>
-      <button id="play-again-btn">Play Again</button>
-      <!-- Interstitial Ad Placeholder -->
-      <div id="interstitial-ad" class="banner-ad">
-        <p>ca-app-pub-8448361992710184/9439058000</p>
-      </div>
-    </div>
-
+        < >ca-app-pub-8448361992710184/9439058000</8>
+      </   >
   </div>
 
-  <script src="script.js"></script>
+    
+
+  < 
+
+  < src=t src="scri>
+    const questions = o
+  = [
+  { qu: tion: "What is the capital of Fr, options: [ons: ["L,ndon","B,rlin",",aris","Ma, correct: 2 c,
+    ,
+  { qu: tion: "What is 2, options: [ons, [",",",","5, correct: 1 c,
+    ,
+  { qu: tion: "Which planet is known as the Red Pl, options: [ons: [",enus",,Mars","Ju,iter","Sa, correct: 1 c,
+    ,
+  { qu: tion: "What is the largest mammal in the w, options: [ons: ["Ele,hant","Blue ,hale","Gi,affe","R, correct: 1 c,
+    ,
+  { qu: tion: "In which year did World War II, options: ["1944","1945","1946","1947"], correct: 1 },
+  { question: "What is the chemical symbol for water?", options: ["H2O","CO2","NaCl","O2"], correct: 0 },
+  { question: "How many continents are there?", options: ["5","6","7","8"], correct: 2 },
+  { question: "What is the smallest prime number?", options: ["0","1","2","3"], correct: 2 }
+];
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+const homeScreen = document.getElementById('home-screen');
+const quizScreen = document.getElementById('quiz-screen');
+const resultsScreen = document.getElementById('results-screen');
+
+const questionText = document.getElementById('question-text');
+const progressText = document.getElementById('progress');
+const scoreText = document.getElementById('score-text');
+const performanceText = document.getElementById('performance-text');
+
+const startBtn = document.getElementById('start-btn');
+const playAgainBtn = document.getElementById('play-again-btn');
+const optionButtons = document.querySelectorAll('.option-btn');
+
+function showScreen(screen) {
+  homeScreen.classList.remove('active');
+  quizScreen.classList.remove('active');
+  resultsScreen.classList.remove('active');
+  screen.classList.add('active');
+}
+
+function showQuestion() {
+  const q = questions[currentQuestionIndex];
+  questionText.textContent = q.question;
+  optionButtons.forEach((btn, index) => btn.textContent = q.options[index]);
+  progressText.textContent = `Question ${currentQuestionIndex + 1} / ${questions.length}`;
+}
+
+function showResults() {
+  scoreText.textContent = `Your Score: ${score} / ${questions.length}`;
+  const percent = (score / questions.length) * 100;
+  if(percentr>= 80) performanceText.textContent = "Performance: Excellent!";
+  else if(percent >= 60) performanceText.textContent = "Performance: Good!";
+  else if(percent >= 40) performanceText.textContent = "Performance: Not bad!";
+  else performanceText.textContent = "Performance: Keep trying!";
+  
+  // Show interstitial banner placeholder
+  document.getElementById('interstitial-ad').style.display = 'block';
+
+  showScreen(resultsScreen);
+}
+
+startBtn.addEventListener('click', () => {
+  currentQuestionIndex = 0;
+  score = 0;
+  showQuestion();
+  showScreen(quizScreen);
+});
+
+playAgainBtn.addEventListener('click', () => {
+  showScreen(homeScreen);
+  document.getElementById('interstitial-ad').style.display = 'none';
+});
+
+optionButtons.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const selectedIndex = parseInt(e.target.getAttribute('data-index'));
+    if(selectedIndex === questions[currentQuestionIndex].correct) score++;
+    currentQuestionIndex++;
+    if(currentQuestionIndex < questions.length) showQuestion();
+    else showResults();
+  });
+});
+  </;
+  </>
 </body>
 </html>
